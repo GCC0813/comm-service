@@ -1,0 +1,14 @@
+spring:
+  rabbitmq:
+    first:
+      host: 106.14.141.62
+      port: 5672
+      username: GCC
+      password: 19970813GCC
+      virtual-host: /
+    second:
+      host: 106.14.141.62
+      port: 5672
+      username: GCC
+      password: 19970813GCC
+      virtual-host: /

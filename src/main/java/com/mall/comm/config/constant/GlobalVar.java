@@ -1,4 +1,4 @@
-package com.mall.comm.constant;
+package com.mall.comm.config.constant;
 
 /**
  * @author haonan

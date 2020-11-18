@@ -1,13 +1,13 @@
 package com.mall.comm.vo.out;
 
 
-import com.mall.comm.constant.CodeMsg;
+import com.mall.comm.config.constant.CodeMsg;
 import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Objects;
 
-import static com.mall.comm.constant.CodeMsg.CODE_200;
+import static com.mall.comm.config.constant.CodeMsg.CODE_200;
 
 /**
  * @author haonan

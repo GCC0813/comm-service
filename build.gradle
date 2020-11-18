@@ -12,6 +12,7 @@ bootJar {
     exclude 'application.properties'
     exclude 'application.yml'
     exclude 'banner.txt'
+    exclude 'constant-config.yml'
 }
 
 allprojects{
@@ -78,7 +79,7 @@ dependencies {
     compile group: 'com.aliyun', name: 'aliyun-java-sdk-dm', version: '3.1.0'
 
     // https://mvnrepository.com/artifact/javax.mail/mail
-    compile group: 'javax.mail', name: 'mail', version: '1.4.7'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail'
 
 }
 

@@ -9,14 +9,26 @@ import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
+import com.mall.comm.config.constant.ConstantProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
+
+import static com.mall.comm.util.MD5Util.md5Decrypt;
 
 @Service("emailService")
 public class EmailService {
 
-    public static void sendEmail() {
+    @Autowired
+    private ConstantProperties constantProperties;
+
+
+
+
+    public void sendEmail() {
         // 如果是除杭州region外的其它region（如新加坡、澳洲Region），需要将下面的”cn-hangzhou”替换为”ap-southeast-1”、或”ap-southeast-2”。
-        IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAII7VgGbDaMCOh", "4t90MPFFcygHzDS6tgMbXbtEVpvAG6");
+        IClientProfile profile = DefaultProfile.getProfile(constantProperties.getRegionId(), md5Decrypt(constantProperties.getAccessKeyId()), md5Decrypt(constantProperties.getSecret()));
         IAcsClient client = new DefaultAcsClient(profile);
         SingleSendMailRequest request = new SingleSendMailRequest();
         try {
@@ -51,7 +63,8 @@ public class EmailService {
         }
     }
 
-    public static void main(String[] args) {
+    @PostConstruct
+    public void main(){
         sendEmail();
     }
 }

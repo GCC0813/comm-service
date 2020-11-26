@@ -5,6 +5,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import java.util.List;
+
 @Configuration
 @ConfigurationProperties(prefix = "alipay")
 @PropertySource(value = "classpath:constant-config.properties",encoding="utf-8")
@@ -16,4 +18,6 @@ public class ConstantProperties {
     private String accessKeyId;
 
     private String secret;
+
+    private List<String> accountName;
 }

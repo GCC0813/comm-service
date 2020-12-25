@@ -59,7 +59,7 @@ public class demo2 {
             a[0] = new InternetAddress("gcc0813@163.com");
             message.setReplyTo(a);
             // 设置收件人邮件地址，比如yyy@yyy.com
-            InternetAddress to = new InternetAddress("350929819@qq.com");
+            InternetAddress to = new InternetAddress("jianeng0922@163.com");
             message.setRecipient(MimeMessage.RecipientType.TO, to);
             //如果同时发给多人，才将上面两行替换为如下（因为部分收信系统的一些限制，尽量每次投递给一个人；同时我们限制单次允许发送的人数是30人）：
             //InternetAddress[] adds = new InternetAddress[2];
@@ -82,7 +82,31 @@ public class demo2 {
             }
             // 设置邮件标题
             message.setSubject("测试邮件");
+
+            /************************************************************/
             // 设置邮件的内容体
+            Multipart multipart = new MimeMultipart();
+            BodyPart html = new MimeBodyPart();
+            html.setContent(
+                    "<!DOCTYPE html>\n" +
+                            "<html lang=\"en\">\n" +
+                            "<head>\n" +
+                            "    <meta charset=\"UTF-8\">\n" +
+                            "</head>\n" +
+                            "<body>\n" +
+                            "    <div>\n" +
+                            "        <span>\n" +
+                            "            您好，您在GoodSongs兑换的歌曲‘爱在西元前’，歌曲相关音频下载地址为‘\n" +
+                            "            <a href=\"http://www.goodsongs.cn/21iuhqqeqwiu\">www.goodsongs.cn/21iuhqqeqwiu</a>\n" +
+                            "            ’，请尽快下载，链接在30日后失效\n" +
+                            "        </span>\n" +
+                            "    </div>\n" +
+                            "</body>\n" +
+                            "</html>","text/html;charset=UTF-8");
+            multipart.addBodyPart(html);
+            message.setContent(multipart);
+            /**********************************************************/
+
             //message.setContent("测试的HTML邮件", "text/html;charset=UTF-8");
             //若需要开启邮件跟踪服务，请使用以下代码设置跟踪链接头。首先域名需要备案，设置且已正确解析了CNAME配置；其次发信需要打Tag，此Tag在控制台已创建并存在，Tag创建10分钟后方可使用；
             //String tagName = "Test";
@@ -94,7 +118,7 @@ public class demo2 {
             //设置跟踪链接头
             //message.addHeader("X-AliDM-Trace", base64Trace);
             // 发送附件，总的邮件大小不超过15M，创建消息部分
-            BodyPart messageBodyPart = new MimeBodyPart();
+           /* BodyPart messageBodyPart = new MimeBodyPart();
             // 消息
             messageBodyPart.setText("消息Text");
             // 创建多重消息
@@ -112,7 +136,7 @@ public class demo2 {
             messageBodyPart.addHeader("Content-Transfer-Encoding", "base64");
             multipart.addBodyPart(messageBodyPart);
             // 发送含有附件的完整消息
-            message.setContent(multipart);
+            message.setContent(multipart);*/
             // 发送附件代码，结束
             // 发送邮件
             Transport.send(message);

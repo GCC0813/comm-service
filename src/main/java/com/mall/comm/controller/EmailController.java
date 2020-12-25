@@ -23,4 +23,7 @@ public class EmailController {
         emailService.sendEmail();
         return JsonOut.ok(CodeMsg.CODE_200);
     }
+
+
+
 }

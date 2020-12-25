@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.mall.comm.util.MD5Util.md5Decrypt;
 
 @Service("emailService")
@@ -61,9 +64,25 @@ public class EmailService {
         }
     }
 
-    @PostConstruct
+    //@PostConstruct
     public void main(){
         sendEmail();
+    }
+
+
+    public static void main(String[] args) {
+        int a = 1;
+        List<String> b = new ArrayList<>();
+
+        for(int c=0;c<3;c++){
+            for (; a<b.size()+2;a++){
+                if(a/3!=0){
+                    b.add("123");
+                }
+            }
+        }
+        System.out.println(a);
+        System.out.println(b);
     }
 }
 

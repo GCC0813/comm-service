@@ -19,14 +19,14 @@ allprojects{
     repositories {
         //默认设置阿里云仓库
         def REPOSITORY_URL = 'http://maven.aliyun.com/nexus/content/groups/public/'
-        all { ArtifactRepository repo ->
+        /*all { ArtifactRepository repo ->
             def url = repo.url.toString()
             //其他国外仓库当做备用仓库
             if ((repo instanceof MavenArtifactRepository) && (url.startsWith('https://repo1.maven.org/maven2') || url.startsWith('https://jcenter.bintray.com'))) {
                 project.logger.lifecycle 'Repository ${repo.url} replaced by $REPOSITORY_URL .'
                 remove repo
             }
-        }
+        }*/
         maven {
             url REPOSITORY_URL
         }
@@ -80,6 +80,10 @@ dependencies {
 
     // https://mvnrepository.com/artifact/javax.mail/mail
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail'
+
+    // https://mvnrepository.com/artifact/com.ctrip.framework.apollo/apollo-client
+    compile group: 'com.ctrip.framework.apollo', name: 'apollo-client', version: '1.0.0'
+
 
 }
 

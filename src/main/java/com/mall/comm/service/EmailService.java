@@ -61,7 +61,7 @@ public class EmailService {
         }
     }
 
-    @PostConstruct
+    //@PostConstruct
     public void main(){
         sendEmail();
     }
